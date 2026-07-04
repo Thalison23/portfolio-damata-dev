@@ -119,6 +119,12 @@
   .proj-link{font-size:13.5px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
   .proj-link:hover{gap:9px}
   .proj-link.off{color:var(--dim);cursor:default}
+  .proj-shot{margin:-26px -26px 20px;height:176px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);background:var(--bg-2)}
+  .proj-shot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .45s ease}
+  .proj:hover .proj-shot img{transform:scale(1.05)}
+  .proj-shot.ph{background:linear-gradient(135deg,rgba(79,140,255,.16),rgba(124,92,255,.16))}
+  .proj-shot.ph .em{font-size:56px;opacity:.85;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35))}
+  .proj-shot .shot-tag{position:absolute;top:12px;left:12px;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:rgba(10,14,26,.72);backdrop-filter:blur(4px);color:var(--muted);padding:5px 10px;border-radius:100px;border:1px solid var(--border)}
 
   /* ---------- INTEGRATIONS ---------- */
   .int-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
@@ -321,6 +327,7 @@
 
       <!-- ClipViral AI -->
       <div class="proj reveal">
+        <div class="proj-shot ph"><span class="em">🎞️</span><span class="shot-tag">Next.js · OpenAI</span></div>
         <div class="proj-top"><div class="proj-ico">🎞️</div><span class="tag tag-saas">SaaS · pipeline IA</span></div>
         <h3>ClipViral AI</h3>
         <p>SaaS que transforma vídeo longo do YouTube em cortes virais (Shorts/Reels) automaticamente. Pipeline real: <b>yt-dlp → Whisper (transcrição) → GPT-4o analisa o trecho viral → FFmpeg corta 9:16 e queima legenda</b>, com worker dedicado, lock otimista e retry.</p>
@@ -330,6 +337,7 @@
 
       <!-- Painel Trafego IA -->
       <div class="proj reveal">
+        <div class="proj-shot ph"><span class="em">📊</span><span class="shot-tag">Meta API</span></div>
         <div class="proj-top"><div class="proj-ico">📊</div><span class="tag tag-saas">SaaS · R$/mês</span></div>
         <h3>Painel de Tráfego IA</h3>
         <p>SaaS de métricas de anúncios: o cliente conecta a própria conta Meta (token read-only) e vê ROAS, lucro, CPA e criativo campeão, atualizando sozinho a cada 5 min. Multi-tenant, mobile-first.</p>
@@ -339,6 +347,7 @@
 
       <!-- Dívida Zero -->
       <div class="proj reveal">
+        <div class="proj-shot"><img src="portfolio_4_app_dividazero.png" loading="lazy" alt="Tela do app Dívida Zero"></div>
         <div class="proj-top"><div class="proj-ico">🤖</div><span class="tag tag-live">● no ar</span></div>
         <h3>Dívida Zero</h3>
         <p>App de organização financeira com um <b>coach de IA de verdade</b>: chat que analisa as dívidas do usuário via Gemini 2.5 Flash rodando em serverless function. Funil completo com checkout e área de membros.</p>
@@ -348,6 +357,7 @@
 
       <!-- Stylos Piscinas -->
       <div class="proj reveal">
+        <div class="proj-shot"><img src="portfolio_1_stylos.png" loading="lazy" alt="Loja online Stylos Piscinas"></div>
         <div class="proj-top"><div class="proj-ico">🛒</div><span class="tag tag-live">● no ar</span></div>
         <h3>Stylos Piscinas — E-commerce</h3>
         <p>Loja online completa com catálogo de 100+ produtos, filtros, carrinho e checkout que gera pedido real via <b>RPC no Postgres</b> (baixa estoque automático). Domínio próprio + auto-deploy no push.</p>
@@ -357,6 +367,7 @@
 
       <!-- Stylos Painel / Gestor PRO -->
       <div class="proj reveal">
+        <div class="proj-shot"><img src="portfolio_3_gestorpro.png" loading="lazy" alt="Painel Gestor PRO"></div>
         <div class="proj-top"><div class="proj-ico">🏪</div><span class="tag tag-saas">Sistema · white-label</span></div>
         <h3>Gestor PRO — Painel de Gestão</h3>
         <p>Painel administrativo de loja (produtos, pedidos, estoque, financeiro) integrado ao e-commerce pelo mesmo banco. O painel manda nos produtos, a loja lê em tempo real. Sendo vendido como produto white-label.</p>
@@ -366,6 +377,7 @@
 
       <!-- Eternize -->
       <div class="proj reveal">
+        <div class="proj-shot"><img src="portfolio_5_eternize.png" loading="lazy" alt="Eternize página de casal"></div>
         <div class="proj-top"><div class="proj-ico">💛</div><span class="tag tag-live">● no ar</span></div>
         <h3>Eternize — Página de Casal</h3>
         <p>App que gera uma página personalizada do casal (fotos, tempo juntos, mensagem) com link único, liberado só após pagamento. Gate de pagamento Kiwify + geração dinâmica de página.</p>
@@ -375,6 +387,7 @@
 
       <!-- Barbearia -->
       <div class="proj reveal">
+        <div class="proj-shot"><img src="portfolio_2_barbearia.png" loading="lazy" alt="Site de agendamento da barbearia"></div>
         <div class="proj-top"><div class="proj-ico">✂️</div><span class="tag tag-live">● no ar</span></div>
         <h3>Barbearia — Agendamento Online</h3>
         <p>Sistema de agendamento para barbearia com painel administrativo, autenticação e horários no banco. Cliente marca, o dono gerencia. Feito em Next.js 14 com Supabase.</p>
@@ -384,6 +397,7 @@
 
       <!-- Posta Aí -->
       <div class="proj reveal">
+        <div class="proj-shot ph"><span class="em">✍️</span><span class="shot-tag">Gemini · JSON</span></div>
         <div class="proj-top"><div class="proj-ico">✍️</div><span class="tag tag-saas">SaaS · IA</span></div>
         <h3>Posta Aí — IA de Conteúdo</h3>
         <p>Ferramenta que gera um post pronto (legenda + hashtags + status de WhatsApp + ideia de foto) pro dono de negócio local, a partir de uma IA que responde em JSON estruturado.</p>
@@ -393,6 +407,7 @@
 
       <!-- Espião de Criativo -->
       <div class="proj reveal">
+        <div class="proj-shot ph"><span class="em">🕵️</span><span class="shot-tag">Gemini Vision</span></div>
         <div class="proj-top"><div class="proj-ico">🕵️</div><span class="tag tag-saas">SaaS · Vision</span></div>
         <h3>Espião de Criativo</h3>
         <p>O cliente sobe o print de um anúncio vencedor e a <b>IA de visão (Gemini Vision)</b> modela aquilo pro produto dele: gancho, ângulo, formato e ritmo — devolvendo uma versão adaptada.</p>
@@ -402,6 +417,7 @@
 
       <!-- Dashboard Meta -->
       <div class="proj reveal">
+        <div class="proj-shot ph"><span class="em">📈</span><span class="shot-tag">Meta API · LGPD</span></div>
         <div class="proj-top"><div class="proj-ico">📈</div><span class="tag tag-live">● no ar</span></div>
         <h3>Dashboard Meta Ads</h3>
         <p>Painel interno de métricas de anúncios por criativo, com acesso protegido por senha e páginas de Privacidade/Termos em conformidade com LGPD. Consome a Marketing API da Meta.</p>
@@ -411,6 +427,7 @@
 
       <!-- Copa Engine -->
       <div class="proj reveal">
+        <div class="proj-shot ph"><span class="em">⚽</span><span class="shot-tag">Monte Carlo</span></div>
         <div class="proj-top"><div class="proj-ico">⚽</div><span class="tag tag-dev">Data / Engine</span></div>
         <h3>Copa Engine — Analytics</h3>
         <p>Motor de análise estatística da Copa 2026: rating Elo + distribuição de Poisson + simulação de Monte Carlo pra estimar probabilidades. Projeto de engenharia/portfólio.</p>
@@ -420,6 +437,7 @@
 
       <!-- Remotion -->
       <div class="proj reveal">
+        <div class="proj-shot ph"><span class="em">🎬</span><span class="shot-tag">Remotion · React</span></div>
         <div class="proj-top"><div class="proj-ico">🎬</div><span class="tag tag-dev">Dev · Vídeo</span></div>
         <h3>Vídeo Gerado em Código</h3>
         <p>Pipeline em Remotion 4 + React que renderiza vídeos animados por código (B-roll, legendas, locução combinadas) e exporta o MP4 final. Vídeo tratado como componente React.</p>
@@ -429,6 +447,7 @@
 
       <!-- da Mata Dev automação -->
       <div class="proj reveal">
+        <div class="proj-shot ph"><span class="em">🔗</span><span class="shot-tag">n8n · WhatsApp</span></div>
         <div class="proj-top"><div class="proj-ico">🔗</div><span class="tag tag-dev">Automação</span></div>
         <h3>Automação de Atendimento</h3>
         <p>Sistema pra negócio local nunca perder cliente: fluxo de WhatsApp com Evolution API + Typebot + n8n + IA + agendamento Cal.com. Integração de várias ferramentas num funil só.</p>
@@ -438,6 +457,7 @@
 
       <!-- Sites Advogados -->
       <div class="proj reveal">
+        <div class="proj-shot ph"><span class="em">⚖️</span><span class="shot-tag">Landing · Conversão</span></div>
         <div class="proj-top"><div class="proj-ico">⚖️</div><span class="tag tag-dev">Sites · Landing</span></div>
         <h3>Sites para Advogados</h3>
         <p>Landing pages profissionais e responsivas para advogados captarem clientes — template reutilizável + versões personalizadas (advocacia criminal, cível). Foco em conversão, performance e CTA direto pro WhatsApp.</p>
@@ -447,6 +467,7 @@
 
       <!-- Loja no Topo -->
       <div class="proj reveal">
+        <div class="proj-shot ph"><span class="em">🚀</span><span class="shot-tag">SEO · Landing</span></div>
         <div class="proj-top"><div class="proj-ico">🚀</div><span class="tag tag-dev">Serviço · Landing</span></div>
         <h3>Loja no Topo</h3>
         <p>Landing page de um serviço próprio pra comércios locais, com SEO técnico configurado (sitemap, robots, Open Graph) e deploy automatizado. Estrutura pensada pra ranquear e converter.</p>
@@ -575,6 +596,7 @@
       <p>Sou desenvolvedor full stack focado em SaaS e produtos com IA. Aprendo rápido, entrego no ar e cuido do produto do banco ao checkout.</p>
       <div class="cta-btns">
         <a href="https://wa.me/5575991676683?text=Ol%C3%A1%20Thalison!%20Vi%20seu%20portf%C3%B3lio" target="_blank" rel="noopener" class="btn btn-p">💬 Chamar no WhatsApp</a>
+        <a href="https://www.linkedin.com/in/thalison-cerqueira-40100b242/" target="_blank" rel="noopener" class="btn btn-s">💼 LinkedIn</a>
         <a href="mailto:thalisoncerqueira97@gmail.com" class="btn btn-s">✉️ Enviar e-mail</a>
         <a href="./curriculo-damata-dev.html" class="btn btn-s">📄 Ver currículo</a>
       </div>
@@ -590,6 +612,8 @@
       <a href="https://wa.me/5575991676683" target="_blank" rel="noopener" style="color:var(--green)">📱 (75) 99167-6683</a>
       &nbsp;·&nbsp;
       <a href="mailto:thalisoncerqueira97@gmail.com" style="color:var(--accent)">✉️ thalisoncerqueira97@gmail.com</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/thalison-cerqueira-40100b242/" target="_blank" rel="noopener" style="color:#a78bff">💼 LinkedIn</a>
     </p>
     <p style="margin-top:10px;font-size:12.5px;color:var(--dim)">Construído do zero — HTML, CSS e JavaScript, sem framework. 😉</p>
   </div>
