@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thalison da Mata — Desenvolvedor Full Stack</title>
-<meta name="description" content="Portfólio de Thalison da Mata (Tai da Mata) — Desenvolvedor Full Stack. SaaS, apps com IA, e-commerce e automações. React, Next.js, Supabase, Netlify, Gemini.">
+<title>Thalison da Mata — Desenvolvedor Full Stack | Sites, Landing Pages e SaaS</title>
+<meta name="description" content="Desenvolvedor Full Stack. Crio sites, landing pages e aplicações web/SaaS focados em resultado — do banco de dados ao deploy. React, Next.js, Node, Supabase e IA em produção.">
+<meta property="og:title" content="Thalison da Mata — Desenvolvedor Full Stack">
+<meta property="og:description" content="Sites, landing pages e SaaS que transformam visitantes em clientes. Do banco de dados ao deploy — React, Next.js, Node, Supabase e IA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://damata-dev.netlify.app">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -97,6 +102,16 @@
   .chip{background:var(--bg-2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px;font-weight:500;font-family:'JetBrains Mono',monospace;color:var(--text);transition:.15s}
   .chip:hover{border-color:var(--accent);color:var(--accent)}
 
+  /* ---------- SERVIÇOS ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+  .svc{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px;display:flex;flex-direction:column;transition:.22s}
+  .svc:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 20px 50px -20px #000}
+  .svc-ico{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px;background:var(--bg-2);border:1px solid var(--border);margin-bottom:16px}
+  .svc h3{font-size:19px;font-weight:700;letter-spacing:-.02em;margin-bottom:9px}
+  .svc p{font-size:14.5px;color:var(--muted);flex:1;margin-bottom:18px}
+  .svc-cta{font-size:14px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:6px;align-self:flex-start;transition:.15s}
+  .svc-cta:hover{gap:10px}
+
   /* ---------- PROJECTS ---------- */
   .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
   .proj{
@@ -186,9 +201,9 @@
   <div class="wrap nav-in">
     <div class="logo"><span class="dot"></span>da Mata<span style="color:var(--dim);font-weight:500">.dev</span></div>
     <div class="nav-links">
-      <a href="#sobre">Sobre</a>
-      <a href="#stack">Stack</a>
+      <a href="#servicos">Serviços</a>
       <a href="#projetos">Projetos</a>
+      <a href="#stack">Stack</a>
       <a href="#playground">Playground</a>
       <a href="#porque">Diferenciais</a>
     </div>
@@ -202,10 +217,10 @@
   <div class="wrap hero-in">
     <div class="badge"><span class="pulse"></span>Disponível para novos projetos</div>
     <h1>Thalison <span class="g">da Mata</span><br>Desenvolvedor Full Stack</h1>
-    <p class="sub">Eu construo e coloco no ar <b>produtos SaaS, apps com IA e sistemas de gestão</b> — do banco de dados ao checkout que recebe pagamento. Não faço projeto de gaveta: meus produtos estão <b>rodando na internet com usuários reais.</b></p>
+    <p class="sub">Eu construo e coloco no ar <b>sites, landing pages, e-commerce e produtos SaaS com IA</b> — do banco de dados ao checkout que recebe pagamento. Não faço projeto de gaveta: meus produtos estão <b>rodando na internet com usuários reais.</b></p>
     <div class="hero-cta">
       <a href="#projetos" class="btn btn-p">Ver projetos →</a>
-      <a href="#stack" class="btn btn-s">⚡ Stack técnica</a>
+      <a href="https://wa.me/5575991676683?text=Ol%C3%A1%20Thalison!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-s">💬 Solicitar orçamento</a>
     </div>
     <div class="stats">
       <div class="stat"><div class="n"><span class="g">18+</span></div><div class="l">Produtos construídos</div></div>
@@ -317,12 +332,52 @@
   </div>
 </section>
 
+<!-- SERVIÇOS -->
+<section id="servicos" style="background:linear-gradient(180deg,var(--bg),rgba(124,92,255,.05))">
+  <div class="wrap">
+    <div class="sec-tag reveal">./serviços</div>
+    <h2 class="reveal">O que eu construo pra você</h2>
+    <p class="sec-desc reveal">Do banco de dados ao deploy — código limpo, no ar de verdade e focado em resultado. Peça um orçamento sem compromisso.</p>
+    <div class="svc-grid">
+
+      <div class="svc reveal">
+        <div class="svc-ico">🌐</div>
+        <h3>Sites & Landing Pages</h3>
+        <p>Sites institucionais e páginas de conversão — responsivos, rápidos e otimizados pro Google. Do design ao deploy, com formulário e botão direto pro WhatsApp.</p>
+        <a class="svc-cta" href="https://wa.me/5575991676683?text=Ol%C3%A1%20Thalison!%20Quero%20um%20or%C3%A7amento%20de%20site%2Flanding%20page." target="_blank" rel="noopener">Solicitar orçamento →</a>
+      </div>
+
+      <div class="svc reveal">
+        <div class="svc-ico">🛒</div>
+        <h3>E-commerce & Sistemas de Gestão</h3>
+        <p>Lojas virtuais e painéis de gestão com catálogo, pedidos, estoque e login. Integração com pagamento e banco de dados em tempo real. <b style="color:var(--text)">Já no ar em clientes reais.</b></p>
+        <a class="svc-cta" href="https://wa.me/5575991676683?text=Ol%C3%A1%20Thalison!%20Quero%20um%20or%C3%A7amento%20de%20loja%2Fsistema%20de%20gest%C3%A3o." target="_blank" rel="noopener">Solicitar orçamento →</a>
+      </div>
+
+      <div class="svc reveal">
+        <div class="svc-ico">🤖</div>
+        <h3>Aplicações Web & SaaS com IA</h3>
+        <p>Plataformas sob medida com autenticação, dashboard, API e Inteligência Artificial integrada (Gemini/OpenAI). Escaláveis e prontas pra crescer.</p>
+        <a class="svc-cta" href="https://wa.me/5575991676683?text=Ol%C3%A1%20Thalison!%20Quero%20conversar%20sobre%20uma%20aplica%C3%A7%C3%A3o%20web%2FSaaS." target="_blank" rel="noopener">Solicitar orçamento →</a>
+      </div>
+
+      <div class="svc reveal">
+        <div class="svc-ico">🔗</div>
+        <h3>Automação de Atendimento</h3>
+        <p>Fluxos de WhatsApp com IA e agendamento automático pra você nunca perder um cliente. Captação, resposta e marcação no piloto automático.</p>
+        <a class="svc-cta" href="https://wa.me/5575991676683?text=Ol%C3%A1%20Thalison!%20Quero%20automatizar%20meu%20atendimento." target="_blank" rel="noopener">Solicitar orçamento →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- PROJECTS -->
 <section id="projetos" style="background:var(--bg-2)">
   <div class="wrap">
     <div class="sec-tag reveal">./projetos</div>
-    <h2 class="reveal">O que eu já construí</h2>
-    <p class="sec-desc reveal">Produtos reais, no ar, com banco de dados, IA e pagamento funcionando. <span class="mono" style="color:var(--green)">● no ar</span> = você pode acessar agora.</p>
+    <h2 class="reveal">Projetos reais que já coloquei no ar</h2>
+    <p class="sec-desc reveal">A prova do que posso construir pra você: cada um resolve um problema de verdade, com banco de dados, IA e pagamento funcionando. <span class="mono" style="color:var(--green)">● no ar</span> = você acessa agora.</p>
     <div class="proj-grid">
 
       <!-- ClipViral AI -->
@@ -592,10 +647,10 @@
   <div class="wrap">
     <div class="cta-box reveal">
       <div class="glow"></div>
-      <h2>Vamos construir algo juntos?</h2>
-      <p>Sou desenvolvedor full stack focado em SaaS e produtos com IA. Aprendo rápido, entrego no ar e cuido do produto do banco ao checkout.</p>
+      <h2>Vamos tirar sua ideia do papel?</h2>
+      <p>Me conta sobre seu projeto e recebe um orçamento rápido e sem compromisso. <b style="color:var(--text)">Respondo rápido.</b> 🤝</p>
       <div class="cta-btns">
-        <a href="https://wa.me/5575991676683?text=Ol%C3%A1%20Thalison!%20Vi%20seu%20portf%C3%B3lio" target="_blank" rel="noopener" class="btn btn-p">💬 Chamar no WhatsApp</a>
+        <a href="https://wa.me/5575991676683?text=Ol%C3%A1%20Thalison!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-p">💬 Solicitar orçamento</a>
         <a href="https://www.linkedin.com/in/thalison-cerqueira-40100b242/" target="_blank" rel="noopener" class="btn btn-s">💼 LinkedIn</a>
         <a href="mailto:thalisoncerqueira97@gmail.com" class="btn btn-s">✉️ Enviar e-mail</a>
         <a href="./curriculo-damata-dev.html" class="btn btn-s">📄 Ver currículo</a>
