@@ -112,6 +112,13 @@
   .svc-cta{font-size:14px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:6px;align-self:flex-start;transition:.15s}
   .svc-cta:hover{gap:10px}
 
+  /* ---------- PARA QUEM É ---------- */
+  .forwho{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:920px}
+  @media(max-width:700px){.forwho{grid-template-columns:1fr}}
+  .fw-item{display:flex;align-items:flex-start;gap:13px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px;font-size:15.5px;color:var(--text);transition:.18s}
+  .fw-item:hover{border-color:var(--green)}
+  .fw-ck{flex-shrink:0;width:25px;height:25px;border-radius:50%;background:rgba(47,212,138,.14);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;border:1px solid rgba(47,212,138,.35);margin-top:1px}
+
   /* ---------- PROJECTS ---------- */
   .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
   .proj{
@@ -332,8 +339,25 @@
   </div>
 </section>
 
+<!-- PARA QUEM É -->
+<section id="paraquem" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-tag reveal">./para-quem</div>
+    <h2 class="reveal">Feito pra você que…</h2>
+    <p class="sec-desc reveal">Se você se identifica com pelo menos um destes, a gente precisa conversar. 👇</p>
+    <div class="forwho reveal">
+      <div class="fw-item"><span class="fw-ck">✓</span> Precisa de um site profissional que passe credibilidade</div>
+      <div class="fw-item"><span class="fw-ck">✓</span> Investe em tráfego, mas não converte visitante em contato</div>
+      <div class="fw-item"><span class="fw-ck">✓</span> Quer uma landing page focada em vendas ou captação de leads</div>
+      <div class="fw-item"><span class="fw-ck">✓</span> Precisa de um sistema ou app web pra escalar o negócio</div>
+      <div class="fw-item"><span class="fw-ck">✓</span> Está cansado de site bonito que não traz resultado nenhum</div>
+      <div class="fw-item"><span class="fw-ck">✓</span> Quer automatizar o atendimento e parar de perder cliente</div>
+    </div>
+  </div>
+</section>
+
 <!-- SERVIÇOS -->
-<section id="servicos" style="background:linear-gradient(180deg,var(--bg),rgba(124,92,255,.05))">
+<section id="servicos" style="background:linear-gradient(180deg,var(--bg-2),rgba(124,92,255,.05))">
   <div class="wrap">
     <div class="sec-tag reveal">./serviços</div>
     <h2 class="reveal">O que eu construo pra você</h2>
