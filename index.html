@@ -56,7 +56,31 @@
   .nav-links{display:flex;gap:28px;font-size:14px;font-weight:500;color:var(--muted)}
   .nav-links a:hover{color:var(--text)}
   .nav-cta{background:var(--grad);color:#fff;padding:9px 18px;border-radius:10px;font-size:13px;font-weight:600}
-  @media(max-width:760px){.nav-links{display:none}}
+  .nav-actions{display:flex;align-items:center;gap:12px}
+  .nav-link-cta{display:none}
+  .nav-toggle{
+    display:none;background:none;border:1px solid var(--border);border-radius:9px;
+    color:var(--text);font-size:19px;line-height:1;padding:6px 11px;cursor:pointer;transition:.15s;
+  }
+  .nav-toggle:hover{border-color:var(--accent);color:var(--accent)}
+  @media(max-width:760px){
+    .nav-toggle{display:inline-flex;align-items:center}
+    .nav-cta{display:none}                 /* CTA vai pra dentro do menu no mobile */
+    .nav-links{
+      display:none;flex-direction:column;gap:0;
+      position:absolute;top:64px;left:0;right:0;
+      background:rgba(10,14,26,.97);backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+      padding:6px 24px 18px;
+      box-shadow:0 24px 40px -20px #000;
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{padding:14px 2px;border-bottom:1px solid var(--border);font-size:15.5px;color:var(--text)}
+    .nav-link-cta{
+      display:block;margin-top:14px;border-bottom:none!important;text-align:center;
+      background:var(--grad);color:#fff;border-radius:10px;font-weight:700;padding:13px!important;
+    }
+  }
   @media(max-width:820px){.about-grid{grid-template-columns:1fr!important}}
 
   /* ---------- HERO ---------- */
@@ -86,6 +110,45 @@
   .stat .n{font-size:34px;font-weight:800;letter-spacing:-.02em}
   .stat .n .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .stat .l{font-size:13px;color:var(--dim);font-weight:500;margin-top:2px}
+
+  /* ---------- GRID INTERATIVO DO HERO (estilo Higgsfield) ---------- */
+  :root{--cell:74px}
+  /* deixa o hero "vazar" o mouse pros quadrados; só links/botões/terminal capturam clique */
+  .hero-in{pointer-events:none}
+  .hero-in a,.hero-in .btn,.hero-in .term{pointer-events:auto}
+  .hero-grid,.hero-spot{
+    position:absolute;inset:0;z-index:1;
+    display:grid;grid-auto-rows:var(--cell);gap:7px;padding:7px;
+    /* acende só na parte de cima: some suave pra baixo */
+    -webkit-mask-image:linear-gradient(to bottom,#000 45%,transparent 100%);
+            mask-image:linear-gradient(to bottom,#000 45%,transparent 100%);
+  }
+  .hero-grid{pointer-events:auto}
+  .hero-cell{
+    border:1px solid rgba(124,92,255,.09);
+    border-radius:14px;
+    transition:background-color .5s ease,border-color .5s ease,box-shadow .5s ease;
+  }
+  /* quadrado sob o cursor: acende lilás na hora */
+  .hero-cell:hover{
+    background-color:rgba(124,92,255,.16);
+    border-color:rgba(167,139,255,.8);
+    box-shadow:0 0 22px rgba(124,92,255,.3) inset;
+    transition:background-color 0s,border-color 0s,box-shadow 0s;
+  }
+  /* holofote: as bordas lilás acendem num círculo em volta do cursor */
+  .hero-spot{
+    pointer-events:none;opacity:0;transition:opacity .25s ease;
+    -webkit-mask-image:radial-gradient(circle 200px at var(--mx,-999px) var(--my,-999px),#000 0%,transparent 70%);
+            mask-image:radial-gradient(circle 200px at var(--mx,-999px) var(--my,-999px),#000 0%,transparent 70%);
+  }
+  .hero-spot .hero-cell{
+    border-color:rgba(167,139,255,.6);
+    box-shadow:0 0 14px rgba(124,92,255,.22);
+    transition:none;
+  }
+  header:hover .hero-spot{opacity:1}
+  @media(prefers-reduced-motion:reduce){.hero-cell{transition:none}}
 
   /* ---------- SECTIONS ---------- */
   section{padding:72px 0;position:relative}
@@ -207,20 +270,26 @@
 <nav>
   <div class="wrap nav-in">
     <div class="logo"><span class="dot"></span>da Mata<span style="color:var(--dim);font-weight:500">.dev</span></div>
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a href="#servicos">Serviços</a>
       <a href="#projetos">Projetos</a>
       <a href="#stack">Stack</a>
       <a href="#playground">Playground</a>
       <a href="#porque">Diferenciais</a>
+      <a href="#contato" class="nav-link-cta">💬 Fale comigo</a>
     </div>
-    <a href="#contato" class="nav-cta">Fale comigo</a>
+    <div class="nav-actions">
+      <a href="#contato" class="nav-cta">Fale comigo</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+    </div>
   </div>
 </nav>
 
 <header>
   <div class="glow glow-1"></div>
   <div class="glow glow-2"></div>
+  <div class="hero-grid" id="heroGrid" aria-hidden="true"></div>
+  <div class="hero-spot" id="heroSpot" aria-hidden="true"></div>
   <div class="wrap hero-in">
     <div class="badge"><span class="pulse"></span>Disponível para novos projetos</div>
     <h1>Thalison <span class="g">da Mata</span><br>Desenvolvedor Full Stack</h1>
@@ -406,7 +475,7 @@
 
       <!-- CopaCuts / ClipViral AI -->
       <div class="proj reveal">
-        <div class="proj-shot"><img src="portfolio_clipviral.png" loading="lazy" alt="CopaCuts AI — cortes virais com IA"></div>
+        <div class="proj-shot"><img src="portfolio_clipviral.webp" loading="lazy" alt="CopaCuts AI — cortes virais com IA"></div>
         <div class="proj-top"><div class="proj-ico">🎞️</div><span class="tag tag-saas">SaaS · pipeline IA</span></div>
         <h3>CopaCuts AI</h3>
         <p>SaaS que transforma vídeo longo em cortes virais (Shorts/Reels) automaticamente. Pipeline real: <b>yt-dlp → Whisper (transcrição) → GPT-4o analisa o trecho viral → FFmpeg corta 9:16 e queima legenda</b>, com worker dedicado, lock otimista e retry.</p>
@@ -416,7 +485,7 @@
 
       <!-- Painel Trafego IA -->
       <div class="proj reveal">
-        <div class="proj-shot"><img src="portfolio_painel.png" loading="lazy" alt="Painel de Tráfego IA"></div>
+        <div class="proj-shot"><img src="portfolio_painel.webp" loading="lazy" alt="Painel de Tráfego IA"></div>
         <div class="proj-top"><div class="proj-ico">📊</div><span class="tag tag-saas">SaaS · R$/mês</span></div>
         <h3>Painel de Tráfego IA</h3>
         <p>SaaS de métricas de anúncios: o cliente conecta a própria conta Meta (token read-only) e vê ROAS, lucro, CPA e criativo campeão, atualizando sozinho a cada 5 min. Multi-tenant, mobile-first.</p>
@@ -426,7 +495,7 @@
 
       <!-- Dívida Zero -->
       <div class="proj reveal">
-        <div class="proj-shot"><img src="portfolio_4_app_dividazero.png" loading="lazy" alt="Tela do app Dívida Zero"></div>
+        <div class="proj-shot"><img src="portfolio_4_app_dividazero.webp" loading="lazy" alt="Tela do app Dívida Zero"></div>
         <div class="proj-top"><div class="proj-ico">🤖</div><span class="tag tag-live">● no ar</span></div>
         <h3>Dívida Zero</h3>
         <p>App de organização financeira com um <b>coach de IA de verdade</b>: chat que analisa as dívidas do usuário via Gemini 2.5 Flash rodando em serverless function. Funil completo com checkout e área de membros.</p>
@@ -436,7 +505,7 @@
 
       <!-- Stylos Piscinas -->
       <div class="proj reveal">
-        <div class="proj-shot"><img src="portfolio_1_stylos.png" loading="lazy" alt="Loja online Stylos Piscinas"></div>
+        <div class="proj-shot"><img src="portfolio_1_stylos.webp" loading="lazy" alt="Loja online Stylos Piscinas"></div>
         <div class="proj-top"><div class="proj-ico">🛒</div><span class="tag tag-live">● no ar</span></div>
         <h3>Stylos Piscinas — E-commerce</h3>
         <p>Loja online completa com catálogo de 100+ produtos, filtros, carrinho e checkout que gera pedido real via <b>RPC no Postgres</b> (baixa estoque automático). Domínio próprio + auto-deploy no push.</p>
@@ -446,7 +515,7 @@
 
       <!-- Stylos Painel / Gestor PRO -->
       <div class="proj reveal">
-        <div class="proj-shot"><img src="portfolio_3_gestorpro.png" loading="lazy" alt="Painel Gestor PRO"></div>
+        <div class="proj-shot"><img src="portfolio_3_gestorpro.webp" loading="lazy" alt="Painel Gestor PRO"></div>
         <div class="proj-top"><div class="proj-ico">🏪</div><span class="tag tag-saas">Sistema · white-label</span></div>
         <h3>Gestor PRO — Painel de Gestão</h3>
         <p>Painel administrativo de loja (produtos, pedidos, estoque, financeiro) integrado ao e-commerce pelo mesmo banco. O painel manda nos produtos, a loja lê em tempo real. Sendo vendido como produto white-label.</p>
@@ -456,7 +525,7 @@
 
       <!-- Eternize -->
       <div class="proj reveal">
-        <div class="proj-shot"><img src="portfolio_5_eternize.png" loading="lazy" alt="Eternize página de casal"></div>
+        <div class="proj-shot"><img src="portfolio_5_eternize.webp" loading="lazy" alt="Eternize página de casal"></div>
         <div class="proj-top"><div class="proj-ico">💛</div><span class="tag tag-live">● no ar</span></div>
         <h3>Eternize — Página de Casal</h3>
         <p>App que gera uma página personalizada do casal (fotos, tempo juntos, mensagem) com link único, liberado só após pagamento. Gate de pagamento Kiwify + geração dinâmica de página.</p>
@@ -466,7 +535,7 @@
 
       <!-- Barbearia -->
       <div class="proj reveal">
-        <div class="proj-shot"><img src="portfolio_2_barbearia.png" loading="lazy" alt="Site de agendamento da barbearia"></div>
+        <div class="proj-shot"><img src="portfolio_2_barbearia.webp" loading="lazy" alt="Site de agendamento da barbearia"></div>
         <div class="proj-top"><div class="proj-ico">✂️</div><span class="tag tag-live">● no ar</span></div>
         <h3>Barbearia — Agendamento Online</h3>
         <p>Sistema de agendamento para barbearia com painel administrativo, autenticação e horários no banco. Cliente marca, o dono gerencia. Feito em Next.js 14 com Supabase.</p>
@@ -476,7 +545,7 @@
 
       <!-- Posta Aí -->
       <div class="proj reveal">
-        <div class="proj-shot"><img src="portfolio_posta.png" loading="lazy" alt="Posta Aí — gerador de post com IA"></div>
+        <div class="proj-shot"><img src="portfolio_posta.webp" loading="lazy" alt="Posta Aí — gerador de post com IA"></div>
         <div class="proj-top"><div class="proj-ico">✍️</div><span class="tag tag-saas">SaaS · IA</span></div>
         <h3>Posta Aí — IA de Conteúdo</h3>
         <p>Ferramenta que gera um post pronto (legenda + hashtags + status de WhatsApp + ideia de foto) pro dono de negócio local, a partir de uma IA que responde em JSON estruturado.</p>
@@ -486,7 +555,7 @@
 
       <!-- Espião de Criativo -->
       <div class="proj reveal">
-        <div class="proj-shot"><img src="portfolio_espiao.png" loading="lazy" alt="Espião de Criativo"></div>
+        <div class="proj-shot"><img src="portfolio_espiao.webp" loading="lazy" alt="Espião de Criativo"></div>
         <div class="proj-top"><div class="proj-ico">🕵️</div><span class="tag tag-saas">SaaS · Vision</span></div>
         <h3>Espião de Criativo</h3>
         <p>O cliente sobe o print de um anúncio vencedor e a <b>IA de visão (Gemini Vision)</b> modela aquilo pro produto dele: gancho, ângulo, formato e ritmo — devolvendo uma versão adaptada.</p>
@@ -496,7 +565,7 @@
 
       <!-- Copa Engine -->
       <div class="proj reveal">
-        <div class="proj-shot"><img src="portfolio_copa.png" loading="lazy" alt="Copa Engine — analytics"></div>
+        <div class="proj-shot"><img src="portfolio_copa.webp" loading="lazy" alt="Copa Engine — analytics"></div>
         <div class="proj-top"><div class="proj-ico">⚽</div><span class="tag tag-dev">Data / Engine</span></div>
         <h3>Copa Engine — Analytics</h3>
         <p>Motor de análise estatística da Copa 2026: rating Elo + distribuição de Poisson + simulação de Monte Carlo pra estimar probabilidades. Projeto de engenharia/portfólio.</p>
@@ -506,7 +575,7 @@
 
       <!-- Caio Sanches (cliente real) -->
       <div class="proj reveal">
-        <div class="proj-shot"><img src="portfolio_7_caio.png" loading="lazy" alt="Site do advogado Caio Sanches"></div>
+        <div class="proj-shot"><img src="portfolio_7_caio.webp" loading="lazy" alt="Site do advogado Caio Sanches"></div>
         <div class="proj-top"><div class="proj-ico">⚖️</div><span class="tag tag-live">● cliente real</span></div>
         <h3>Advocacia Caio Sanches</h3>
         <p>Site de captação para o advogado <b>Caio Sanches</b> (Feira de Santana): landing profissional com áreas de atuação, depoimentos e botão direto pro WhatsApp. <b style="color:var(--text)">Projeto entregue e no ar.</b></p>
@@ -516,7 +585,7 @@
 
       <!-- Loja no Topo -->
       <div class="proj reveal">
-        <div class="proj-shot"><img src="portfolio_loja.png" loading="lazy" alt="Loja no Topo — landing"></div>
+        <div class="proj-shot"><img src="portfolio_loja.webp" loading="lazy" alt="Loja no Topo — landing"></div>
         <div class="proj-top"><div class="proj-ico">🚀</div><span class="tag tag-dev">Serviço · Landing</span></div>
         <h3>Loja no Topo</h3>
         <p>Landing page de um serviço próprio pra comércios locais, com SEO técnico configurado (sitemap, robots, Open Graph) e deploy automatizado. Estrutura pensada pra ranquear e converter.</p>
@@ -670,6 +739,55 @@
 </footer>
 
 <script>
+  // ---- menu hambúrguer (mobile) ----
+  (function(){
+    const btn=document.getElementById('navToggle');
+    const menu=document.getElementById('navLinks');
+    if(!btn||!menu) return;
+    function set(open){
+      menu.classList.toggle('open',open);
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      btn.textContent=open?'✕':'☰';
+    }
+    btn.addEventListener('click',()=>set(!menu.classList.contains('open')));
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
+    // fecha ao voltar pro desktop
+    window.addEventListener('resize',()=>{ if(window.innerWidth>760) set(false); });
+  })();
+
+  // ---- grid interativo do hero (bordas lilás acendem no holofote + quadrado sob o cursor) ----
+  (function(){
+    const header=document.querySelector('header');
+    const grid=document.getElementById('heroGrid');
+    const spot=document.getElementById('heroSpot');
+    if(!header||!grid||!spot) return;
+    const CELL=74, GAP=7;
+    function fill(el,total){
+      el.innerHTML='';
+      const f=document.createDocumentFragment();
+      for(let i=0;i<total;i++){const d=document.createElement('div');d.className='hero-cell';f.appendChild(d);}
+      el.appendChild(f);
+    }
+    function build(){
+      const cols=Math.ceil(header.clientWidth/(CELL+GAP));
+      const rows=Math.ceil(header.clientHeight/(CELL+GAP));
+      const total=cols*rows;
+      if(grid.childElementCount===total) return;
+      const cssCols='repeat('+cols+','+CELL+'px)';
+      grid.style.gridTemplateColumns=cssCols;
+      spot.style.gridTemplateColumns=cssCols;
+      fill(grid,total); fill(spot,total);
+    }
+    build();
+    if(window.ResizeObserver) new ResizeObserver(build).observe(header);
+    else window.addEventListener('resize',build);
+    header.addEventListener('pointermove',(e)=>{
+      const r=header.getBoundingClientRect();
+      header.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      header.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  })();
+
   // reveal on scroll
   const io=new IntersectionObserver((es)=>{
     es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
