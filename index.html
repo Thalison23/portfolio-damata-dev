@@ -10,6 +10,9 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://damatadev.com.br">
 <meta name="theme-color" content="#0a0e1a">
+<link rel="icon" href="favicon.svg?v=1" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png?v=1" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -28,6 +31,7 @@
     --serif:'Fraunces',Georgia,'Times New Roman',serif;
     --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
     --r:6px;
+    --cell:74px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -53,8 +57,12 @@
   /* nav */
   nav{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--border)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-  .logo{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--text)}
+  .logo{display:inline-flex;align-items:center;gap:9px;font-family:var(--serif);font-size:21px;font-weight:600;color:var(--text);letter-spacing:-.01em}
   .logo:hover{text-decoration:none}
+  .logo .tld{color:var(--dim);font-weight:500}
+  .logo .online{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(47,212,138,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,212,138,.5)}70%{box-shadow:0 0 0 9px rgba(47,212,138,0)}100%{box-shadow:0 0 0 0 rgba(47,212,138,0)}}
+  @media(prefers-reduced-motion:reduce){.logo .online{animation:none}}
   .nav-links{display:flex;gap:28px;align-items:center}
   .nav-links a{color:var(--muted);font-size:14.5px;font-weight:500}
   .nav-links a:hover{color:var(--text);text-decoration:none}
@@ -68,8 +76,26 @@
 
   /* hero */
   header{position:relative;overflow:hidden;border-bottom:1px solid var(--border);background:var(--bg)}
-  .hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:56px 56px;opacity:.45;-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 85%);mask-image:linear-gradient(180deg,#000 0%,transparent 85%)}
-  .hero-in{position:relative;padding:96px 24px 72px;max-width:1120px;margin:0 auto}
+  /* grade de quadrados do hero: o holofote lilas acende as bordas em volta do cursor */
+  .hero-grid,.hero-spot{
+    position:absolute;inset:0;z-index:1;
+    display:grid;grid-auto-rows:var(--cell);gap:7px;padding:7px;
+    -webkit-mask-image:linear-gradient(to bottom,#000 45%,transparent 100%);
+            mask-image:linear-gradient(to bottom,#000 45%,transparent 100%);
+  }
+  .hero-grid{pointer-events:auto}
+  .hero-cell{border:1px solid rgba(124,92,255,.09);border-radius:14px;transition:background-color .5s ease,border-color .5s ease,box-shadow .5s ease}
+  .hero-cell:hover{background-color:rgba(124,92,255,.16);border-color:rgba(167,139,255,.8);box-shadow:0 0 22px rgba(124,92,255,.3) inset;transition:background-color 0s,border-color 0s,box-shadow 0s}
+  .hero-spot{
+    pointer-events:none;opacity:0;transition:opacity .25s ease;
+    -webkit-mask-image:radial-gradient(circle 200px at var(--mx,-999px) var(--my,-999px),#000 0%,transparent 70%);
+            mask-image:radial-gradient(circle 200px at var(--mx,-999px) var(--my,-999px),#000 0%,transparent 70%);
+  }
+  .hero-spot .hero-cell{border-color:rgba(167,139,255,.6);box-shadow:0 0 14px rgba(124,92,255,.22);transition:none}
+  header:hover .hero-spot{opacity:1}
+  @media(prefers-reduced-motion:reduce){.hero-cell{transition:none}}
+  .hero-in{position:relative;z-index:2;pointer-events:none;padding:96px 24px 72px;max-width:1120px;margin:0 auto}
+  .hero-in a{pointer-events:auto}
   .hero-meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--muted);margin-bottom:26px}
   .hero-meta .on{color:var(--green)}
   .hero-meta .on::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:7px;vertical-align:1px}
@@ -158,7 +184,7 @@
 
 <nav>
   <div class="wrap nav-in">
-    <a class="logo" href="#top" aria-label="da Mata Dev, início">da Mata Dev</a>
+    <a class="logo" href="#top" aria-label="daMata.dev, voltar ao início" title="Disponível para novos projetos"><span class="online" aria-hidden="true"></span>daMata<span class="tld">.dev</span></a>
     <div class="nav-links" id="navLinks">
       <a href="#projetos">Projetos</a>
       <a href="#servicos">Serviços</a>
@@ -177,6 +203,7 @@
 
 <header id="top">
   <div class="hero-grid" id="heroGrid" aria-hidden="true"></div>
+  <div class="hero-spot" id="heroSpot" aria-hidden="true"></div>
   <div class="hero-in">
     <div class="hero-meta">
       <span>Thalison da Mata</span>
@@ -517,7 +544,7 @@
 
 <footer>
   <div class="wrap">
-    <span>da Mata Dev, Thalison da Mata. Feira de Santana, BA.</span>
+    <span>daMata.dev, Thalison da Mata. Feira de Santana, BA.</span>
     <span>© 2026</span>
   </div>
 </footer>
@@ -535,6 +562,39 @@
     btn.addEventListener('click',()=>set(!menu.classList.contains('open')));
     menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
     window.addEventListener('resize',()=>{ if(window.innerWidth>760) set(false); });
+  })();
+
+  // grade interativa do hero: bordas lilas acendem no holofote, e o quadrado sob o cursor pinta na hora
+  (function(){
+    const header=document.querySelector('header');
+    const grid=document.getElementById('heroGrid');
+    const spot=document.getElementById('heroSpot');
+    if(!header||!grid||!spot) return;
+    const CELL=74, GAP=7;
+    function fill(el,total){
+      el.innerHTML='';
+      const f=document.createDocumentFragment();
+      for(let i=0;i<total;i++){const d=document.createElement('div');d.className='hero-cell';f.appendChild(d);}
+      el.appendChild(f);
+    }
+    function build(){
+      const cols=Math.ceil(header.clientWidth/(CELL+GAP));
+      const rows=Math.ceil(header.clientHeight/(CELL+GAP));
+      const total=cols*rows;
+      if(grid.childElementCount===total) return;
+      const cssCols='repeat('+cols+','+CELL+'px)';
+      grid.style.gridTemplateColumns=cssCols;
+      spot.style.gridTemplateColumns=cssCols;
+      fill(grid,total); fill(spot,total);
+    }
+    build();
+    if(window.ResizeObserver) new ResizeObserver(build).observe(header);
+    else window.addEventListener('resize',build);
+    header.addEventListener('pointermove',(e)=>{
+      const r=header.getBoundingClientRect();
+      header.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      header.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
   })();
 </script>
 </body>
