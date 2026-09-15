@@ -443,7 +443,7 @@
       <div class="svc reveal">
         <div class="svc-ico">🛒</div>
         <h3>E-commerce & Sistemas de Gestão</h3>
-        <p>Lojas virtuais e painéis de gestão com catálogo, pedidos, estoque e login. Integração com pagamento e banco de dados em tempo real. <b style="color:var(--text)">Já no ar em clientes reais.</b></p>
+        <p>Lojas virtuais e painéis de gestão com catálogo, pedidos, estoque e login. Integração com pagamento, banco de dados em tempo real e ERP, como o Simples Varejo. <b style="color:var(--text)">Já no ar em clientes reais.</b></p>
         <a class="svc-cta" href="https://wa.me/5575991676683?text=Ol%C3%A1%20Thalison!%20Quero%20um%20or%C3%A7amento%20de%20loja%2Fsistema%20de%20gest%C3%A3o." target="_blank" rel="noopener">Solicitar orçamento →</a>
       </div>
 
@@ -473,6 +473,66 @@
     <p class="sec-desc reveal">A prova do que posso construir pra você: cada um resolve um problema de verdade, com banco de dados, IA e pagamento funcionando. <span class="mono" style="color:var(--green)">● no ar</span> = você acessa agora.</p>
     <div class="proj-grid">
 
+      <!-- Loja do Chico -->
+      <div class="proj reveal">
+        <div class="proj-shot"><img src="portfolio_chico.webp" loading="lazy" alt="Vitrine da Loja do Chico com os produtos mais pedidos"></div>
+        <div class="proj-top"><div class="proj-ico">🧺</div><span class="tag tag-live">● cliente real</span></div>
+        <h3>Loja do Chico, pedido ligado ao ERP</h3>
+        <p>Mercearia que recebe pedido pelo site e entrega no bairro ou separa pra retirada. <b>O pedido do site entra direto no Simples Varejo</b>, o ERP da loja, e o catálogo com preço, foto e estoque sai da mesma API. O servidor recalcula o preço e valida cada item antes de aceitar. Redesign tirou 119 emojis e 18 gradientes da tela, com 76 testes automatizados em jsdom e Chrome real.</p>
+        <div class="proj-tech"><span>JavaScript</span><span>Netlify Functions</span><span>API do Simples Varejo</span><span>jsdom</span></div>
+        <a class="proj-link" href="https://loja-do-chico.netlify.app" target="_blank" rel="noopener">loja-do-chico.netlify.app ↗</a>
+      </div>
+
+      <!-- Radar DJEN -->
+      <div class="proj reveal">
+        <div class="proj-shot"><img src="portfolio_djen.webp" loading="lazy" alt="Landing do Radar DJEN com o painel de prazos"></div>
+        <div class="proj-top"><div class="proj-ico">🔔</div><span class="tag tag-saas">SaaS · jurídico</span></div>
+        <h3>Radar DJEN, prazos do diário oficial</h3>
+        <p>Produto próprio para advogados: consulta o Diário de Justiça Eletrônico Nacional pela inscrição na OAB, separa providência de expediente e conta o prazo pelo art. 224 do CPC, em ordem de vencimento. <b>O robô roda em cron dentro do Brasil</b>, porque a API do CNJ recusa IP estrangeiro. Landing de venda com Lighthouse 94/100/100/100 e teste grátis de 7 dias.</p>
+        <div class="proj-tech"><span>Python</span><span>Vercel Functions</span><span>Supabase</span><span>Tailwind 4</span><span>Netlify</span></div>
+        <a class="proj-link" href="https://djenradar.com.br" target="_blank" rel="noopener">djenradar.com.br ↗</a>
+      </div>
+
+      <!-- JC Sistemas e Informatica -->
+      <div class="proj reveal">
+        <div class="proj-shot"><img src="portfolio_jc.webp" loading="lazy" alt="Site de pedidos da JC Sistemas e Informática"></div>
+        <div class="proj-top"><div class="proj-ico">🖥️</div><span class="tag tag-live">● cliente real</span></div>
+        <h3>JC Sistemas e Informática, loja com pedido</h3>
+        <p>Loja de informática de Feira de Santana que cansou de responder preço item por item. O cliente monta a lista, escolhe Pix, cartão ou dinheiro e manda pro WhatsApp com <b>o pedido em PDF hospedado no domínio da própria loja</b>, em vez de paredão de texto. Domínio próprio apontado no registro.br e revisão de segurança com 6 achados corrigidos antes de subir.</p>
+        <div class="proj-tech"><span>JavaScript</span><span>Netlify Functions</span><span>Blobs</span><span>registro.br</span></div>
+        <a class="proj-link" href="https://jcsistemaseinformatica.com.br" target="_blank" rel="noopener">jcsistemaseinformatica.com.br ↗</a>
+      </div>
+
+      <!-- VBA Tech -->
+      <div class="proj reveal">
+        <div class="proj-shot"><img src="portfolio_vbatech.webp" loading="lazy" alt="Site da VBA Tech, automação industrial"></div>
+        <div class="proj-top"><div class="proj-ico">⚡</div><span class="tag tag-live">● cliente real</span></div>
+        <h3>VBA Tech, automação industrial</h3>
+        <p>Site institucional, portfólio de obras e loja com carrinho para uma empresa de engenharia elétrica e automação. <b>Painel de supervisão desenhado à mão no topo</b>, cases com foto real de obra, sitemap, 404 e título por rota. Domínio próprio com DNS na Netlify. Também cuido do Instagram deles, com agendador próprio publicando pela API oficial da Meta.</p>
+        <div class="proj-tech"><span>React</span><span>Vite</span><span>react-router</span><span>Netlify</span><span>API da Meta</span></div>
+        <a class="proj-link" href="https://vbatech.com.br" target="_blank" rel="noopener">vbatech.com.br ↗</a>
+      </div>
+
+      <!-- Agenda IA Med -->
+      <div class="proj reveal">
+        <div class="proj-shot"><img src="portfolio_agenda.webp" loading="lazy" alt="Landing da Agenda IA Med"></div>
+        <div class="proj-top"><div class="proj-ico">🩺</div><span class="tag tag-live">● cliente real</span></div>
+        <h3>Agenda IA Med, landing de venda</h3>
+        <p>Página de venda de uma recepção com IA para clínicas, fechada por parceiro comercial. <b>Foto e celular viraram uma composição só</b>, que não quebra ao redimensionar, com contraste medido no pixel em 9 larguras. Publicada numa subpasta ao lado do WordPress do cliente, na Hostinger, sem mexer no site que já existia.</p>
+        <div class="proj-tech"><span>HTML5</span><span>CSS3</span><span>JS</span><span>Hostinger</span></div>
+        <a class="proj-link" href="https://agendaiamed.com.br/para-aprovacao-site-01/" target="_blank" rel="noopener">agendaiamed.com.br ↗</a>
+      </div>
+
+      <!-- Ebook Maranhao -->
+      <div class="proj reveal">
+        <div class="proj-shot"><img src="portfolio_ebook.webp" loading="lazy" alt="Landing do ebook O Maranhão que Cai na Prova"></div>
+        <div class="proj-top"><div class="proj-ico">📚</div><span class="tag tag-saas">Produto próprio · funil</span></div>
+        <h3>O Maranhão que Cai na Prova, funil de ebook</h3>
+        <p>Ebook de História e Geografia do Maranhão para concurso de PM, Bombeiro e Polícia Penal, com landing, checkout e tráfego pago. <b>Funil validado com venda real</b>, a R$ 20 por dia de anúncio. Contador regressivo até a prova, Pixel da Meta provado em produção com CSP ligada, painel de origem por link e gabarito gerado por script.</p>
+        <div class="proj-tech"><span>HTML</span><span>Netlify Functions</span><span>Pixel da Meta</span><span>Hotmart</span></div>
+        <a class="proj-link" href="https://maranhao-que-cai-na-prova.netlify.app" target="_blank" rel="noopener">maranhao-que-cai-na-prova.netlify.app ↗</a>
+      </div>
+
       <!-- TFD Agendamento -->
       <div class="proj reveal">
         <div class="proj-shot"><img src="portfolio_tfd.webp" loading="lazy" alt="Painel de operação do sistema TFD"></div>
@@ -480,7 +540,7 @@
         <h3>TFD, transporte de pacientes</h3>
         <p>Sistema para secretaria municipal de saúde agendar o transporte de quem faz tratamento fora do domicílio. Cada prefeitura só enxerga os próprios pacientes, e <b>o filtro fica dentro do UPDATE, não só na tela</b>. Tem mapa de assentos do veículo, lista de embarque em PDF e comprovante térmico. <b>88 verificações automatizadas</b> cobrem escopo entre municípios, CSP e contraste.</p>
         <div class="proj-tech"><span>Next.js 16</span><span>TypeScript</span><span>PostgreSQL</span><span>Vercel</span></div>
-        <a class="proj-link" href="https://tfd-agendamento.vercel.app" target="_blank" rel="noopener">tfd-agendamento.vercel.app ↗</a>
+        <a class="proj-link" href="https://tfd-agendamento-five.vercel.app" target="_blank" rel="noopener">tfd-agendamento-five.vercel.app ↗</a>
       </div>
 
       <!-- CRM SegYM -->
@@ -500,7 +560,7 @@
         <h3>Atendimento de 0 a 100</h3>
         <p>Prontuário para nutricionista materno-infantil, com 9 módulos e 26 rotas. O coração é o <b>motor de curvas de crescimento da OMS</b>: tabelas LMS de 0 a 24 meses, escore-z e idade corrigida para prematuro, com 34 testes só nessa parte. Banco com regra de dono em todas as tabelas.</p>
         <div class="proj-tech"><span>Next.js 15</span><span>React 19</span><span>TypeScript</span><span>Supabase</span></div>
-        <a class="proj-link" href="https://atendimento-0a100-lp.vercel.app" target="_blank" rel="noopener">atendimento-0a100-lp.vercel.app ↗</a>
+        <span class="proj-link off">Demonstração sob pedido</span>
       </div>
 
       <!-- Aluminio Atual -->
@@ -508,8 +568,8 @@
         <div class="proj-shot"><img src="portfolio_aluminio.webp" loading="lazy" alt="Catálogo da Alumínio Atual"></div>
         <div class="proj-top"><div class="proj-ico">🏭</div><span class="tag tag-live">● cliente real</span></div>
         <h3>Alumínio Atual, pedido B2B</h3>
-        <p>Catálogo e pedido para uma fábrica de formas de alumínio, com domínio próprio. <b>Cada vendedor tem um link que trava a tabela de preço dele</b>, então o cliente de um não enxerga a condição do outro. O pedido vira PDF no próprio navegador e chega no WhatsApp como link, em vez de paredão de texto. Os 110 itens foram conferidos contra o ERP da fábrica.</p>
-        <div class="proj-tech"><span>Netlify Functions</span><span>Blobs</span><span>jsPDF</span><span>API do ERP</span></div>
+        <p>Catálogo e pedido para uma fábrica de formas de alumínio, com domínio próprio. <b>Cada vendedor tem um link que trava a tabela de preço dele</b>, então o cliente de um não enxerga a condição do outro. O pedido vira PDF no próprio navegador e chega no WhatsApp como link, em vez de paredão de texto. Os 112 itens do catálogo saem da API do Simples Varejo, o ERP da fábrica.</p>
+        <div class="proj-tech"><span>Netlify Functions</span><span>Blobs</span><span>jsPDF</span><span>API do Simples Varejo</span></div>
         <a class="proj-link" href="https://aluminiouniverso.com.br" target="_blank" rel="noopener">aluminiouniverso.com.br ↗</a>
       </div>
 
